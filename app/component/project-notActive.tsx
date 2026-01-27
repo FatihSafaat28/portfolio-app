@@ -1,6 +1,14 @@
 import React from 'react'
-
-export default function ProjectNotActive() {
+interface project {
+  shortTittle : string
+  image : string
+  tech : string
+}
+export default function ProjectNotActive({
+  shortTittle,
+  image,
+  tech
+}: project) {
   return (
     <div className='relative w-full h-full overflow-hidden rounded-3xl'>
         {/* Background Image */}
@@ -8,7 +16,7 @@ export default function ProjectNotActive() {
           id='bg-img' 
           className='absolute inset-0 bg-cover bg-center'
           style={{
-            backgroundImage: 'url(https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&q=80)',
+            backgroundImage: image ? `url(${image})` : 'url(https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&q=80)',
           }}
         >
           {/* Dark overlay for better text visibility */}
@@ -22,13 +30,13 @@ export default function ProjectNotActive() {
             className='text-white text-2xl font-bold tracking-wider'
             style={{ writingMode: 'vertical-rl' }}
           >
-            Project 1
+            {shortTittle}
           </div>
           <div 
             id='tech' 
             className='text-slate-300 text-lg font-medium'
           >
-            UI
+            {tech}
           </div>
         </div>
     </div>
