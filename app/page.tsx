@@ -7,27 +7,11 @@ import ProjectActive from "./component/project-Active";
 
 import SkillBadge from "./component/SkillBadge";
 import projectList from "./helper/projectList";
+import skills from "./helper/skillList"
+import { Meteors } from "@/components/ui/meteors";
+import { ConstellationBackground } from "@/components/ui/constellation";
 
 
-const skills = [
-  // Frontend
-  { name: "React", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg", category: "frontend", variant: "secondary", color: "#61DAFB" },
-  { name: "Next.js", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg", category: "frontend", variant: "secondary", color: "#FFFFFF" },
-  { name: "TypeScript", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg", category: "frontend", variant: "secondary", color: "#3178C6" },
-  { name: "JavaScript", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg", category: "frontend", variant: "secondary", color: "#F7DF1E" },
-  { name: "HTML5", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg", category: "frontend", variant: "secondary", color: "#E34F26" },
-  { name: "Tailwind CSS", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg", category: "frontend", variant: "secondary", color: "#38B2AC" },
-  
-  // Backend
-  { name: "PostgreSQL", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg", category: "backend", variant: "default", color: "#336791" },
-  { name: "Prisma", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/prisma/prisma-original.svg", category: "backend", variant: "default", color: "#2D3748" },
-  { name: "Supabase", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/supabase/supabase-original.svg", category: "backend", variant: "default", color: "#3ECF8E" },
-
-  // Tools
-  { name: "GitHub", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg", category: "tools", variant: "outline", color: "#FFFFFF" },
-  { name: "Figma", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg", category: "tools", variant: "outline", color: "#F24E1E" },
-  { name: "VS Code", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg", category: "tools", variant: "outline", color: "#007ACC" },
-] as const;
 
 export default function Page() {
   const vantaRef = useRef<HTMLDivElement>(null);
@@ -155,7 +139,20 @@ export default function Page() {
         id="about"
         className="h-screen w-full snap-start bg-slate-950 flex items-center justify-center relative"
       >
-        <div className={`flex flex-col gap-4 justify-center text-center w-[70vw] transition-all duration-700 ease-out delay-400 ${
+        <div className="absolute inset-x-0 top-0 h-[65%] z-0 pointer-events-none opacity-60">
+          <ConstellationBackground 
+            className="absolute inset-0 bg-transparent"
+            count={200}
+            nodeSize={1}
+            connectionDistance={80}
+            nodeColor="white"
+            lineColor="rgba(255, 255, 255, 0.2)"
+            mouseRadius={0} // Disable mouse interaction for background-only feel
+            glow={false}
+          />
+        </div>
+        <Meteors className="absolute inset-0 z-0 bg-transparent" />
+        <div className={`relative z-10 flex flex-col gap-4 justify-center text-center w-[70vw] transition-all duration-700 ease-out delay-400 ${
           isAboutVisible 
             ? 'opacity-100 translate-y-0' 
             : 'opacity-0 translate-y-10'
@@ -180,7 +177,7 @@ export default function Page() {
           </h3>
         </div>
         {/* Efek Vignette/Fade (Opsional) */}
-          <div className="absolute inset-0 z-1 bg-linear-to-t from-black via-transparent to-slate-950 pointer-events-none" />
+          <div className="absolute inset-0 z-10 bg-linear-to-t from-black via-transparent to-slate-950 pointer-events-none" />
 
       </section>
 
@@ -277,9 +274,17 @@ export default function Page() {
       <section
         ref={projectRef}
         id="project"
-        className="h-screen w-full snap-start bg-slate-950 flex items-center justify-center"
+        className="h-screen w-full snap-start bg-slate-950 flex items-center justify-center relative overflow-hidden"
       >
-        <div className={`flex flex-col gap-6 justify-center text-center w-[70vw] transition-all duration-700 ease-out delay-400 ${
+        {/* Dynamic Background Image */}
+         <div 
+            className="absolute inset-0 z-0 bg-cover bg-center transition-all duration-700 ease-in-out opacity-20 blur-sm"
+            style={{
+                backgroundImage: `url(${projectList[expandedItem - 1]?.image || ''})`
+            }}
+         />
+
+        <div className={`relative z-10 flex flex-col gap-6 justify-center text-center w-[70vw] transition-all duration-700 ease-out delay-400 ${
           isProjectVisible 
             ? 'opacity-100 translate-y-0' 
             : 'opacity-0 translate-y-10'
