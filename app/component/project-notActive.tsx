@@ -14,7 +14,7 @@ export default function ProjectNotActive({
         {/* Background Image */}
         <div 
           id='bg-img' 
-          className='absolute inset-0 bg-cover bg-center'
+          className='absolute inset-0 bg-cover bg-top'
           style={{
             backgroundImage: image ? `url(${image})` : 'url(https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&q=80)',
           }}

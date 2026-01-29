@@ -21,7 +21,7 @@ export default function ProjectActive({
         </div>
         <div 
           id='image' 
-          className='flex-1 flex items-center justify-center bg-slate-700 rounded-lg overflow-hidden bg-cover bg-center'
+          className='flex-1 flex items-center justify-center bg-slate-700 rounded-lg overflow-hidden bg-cover bg-top'
           style={{
             backgroundImage: image ? `url(${image})` : 'url(https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&q=80)'
           }}
@@ -34,7 +34,7 @@ export default function ProjectActive({
             <div id='description' className='flex items-start justify-start text-start text-slate-400 text-xs'>
                 {description}
             </div>
-            <Link href={link}>
+            <Link href={link} target="_blank" rel="noopener noreferrer">
             <div id='link' className='flex items-start justify-start text-blue-400 text-xs hover:text-blue-300 cursor-pointer transition-colors'>
                 View Project →
             </div>

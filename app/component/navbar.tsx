@@ -29,7 +29,7 @@ export default function Navbar() {
 
         {/* Grup Kanan */}
         <div className="flex gap-6 items-center">
-          <Link href="#projects" className={navLinkStyle}>
+          <Link href="#project" className={navLinkStyle}>
             Project
           </Link>
           <Link href="#contact" className={navLinkStyle}>
