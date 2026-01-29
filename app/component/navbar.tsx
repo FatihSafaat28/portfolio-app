@@ -20,7 +20,7 @@ export default function Navbar() {
         {/* Center Logo - Bisa diganti Icon atau Image */}
         <div className="flex items-center">
           <Link
-            href="/"
+            href="#home"
             className="leading-none mb-1 font-extrabold tracking-widest text-2xl px-2 playfair bg-linear-to-r from-slate-200 via-slate-400 to-slate-500 bg-clip-text text-transparent"
           >
             FATIH
